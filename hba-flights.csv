@@ -1,0 +1,21 @@
+ORIGIN,FLIGHT NUMBER,AIRLINE,SCHEDULED ARRIVAL,ARRIVAL TERMINAL
+MEL Melbourne,JQ 701,Jetstar Airways,07:25:00, T-I
+MEL Melbourne,JQ 703,Jetstar Airways,08:35:00, T-I
+SYD Sydney,JQ 721,Jetstar Airways,09:20:00, T-I
+MEL Melbourne,DJ 1316,Virgin Australia,09:55:00, T-Domestic 2
+MEL Melbourne,QF 1011,Qantas Airways,10:00:00, T-D
+MEL Melbourne,JQ 705,Jetstar Airways,11:05:00, T-I
+SYD Sydney,DJ 1530,Virgin Australia,11:45:00, T-Domestic 3
+MEL Melbourne,DJ 1320,Virgin Australia,12:40:00, T-Domestic 3
+BNE Brisbane,DJ 704,Virgin Australia,13:20:00, T-Domestic 3
+MEL Melbourne,JQ 709,Jetstar Airways,16:05:00, T-I
+SYD Sydney,QF 1019,Qantas Airways,16:10:00, T-D
+SYD Sydney,DJ 1534,Virgin Australia,16:30:00, T-Domestic 3
+MEL Melbourne,DJ 1328,Virgin Australia,17:25:00, T-Domestic 3
+MEL Melbourne,JQ 711,Jetstar Airways,18:40:00, T-I
+OOL Coolangatta (Gold Coast),JQ 731,Jetstar Airways,19:15:00, T-I
+SYD Sydney,JQ 723,Jetstar Airways,19:50:00, T-I
+MEL Melbourne,QF 1013,Qantas Airways,20:15:00, T-D
+MEL Melbourne,DJ 1332,Virgin Australia,21:00:00, T-Domestic 3
+CBR Canberra,DJ 1205,Virgin Australia,21:15:00, T-Domestic 2
+MEL Melbourne,DJ 1336,Virgin Australia,22:55:00, T-Domestic 3

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PyCon AU Flight Meetup</title>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; }
+      li { width: 50%; float: left; }
+      div.day { clear: both; }
+      ul.unstyled { margin-bottom: 25px; }
+      ul.unstyled:last-child { margin-bottom: 0px; }
+      tr.day { background-color: #f5f5f5; }
+    </style>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/jquery.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".alert").alert();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">PyCon AU 2012 Flight Meetups</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+{% if messages %}
+{% for message in messages %}
+      <div class="fade in alert{% if message.tags %} {{ message.tags }}{% endif %}">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          {{ message }}
+      </div>
+{% endfor %}
+{% endif %}
+
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <th>Arrival Time</th>
+          <th>Airline</th>
+          <th>Flight</th>
+          <th>Origin</th>
+          <th>Terminal</th>
+          <th>People</th>
+        </thead>
+{% for day, flights in arrivals %}
+        <tr class="day">
+          <td colspan="6"><div class="day"><b>{{ day }}</b></div></td>
+        </tr>
+{% for flight, people in flights %}
+        <tr class="flight">
+          <td>{{ flight.arrives|time }}</td>
+          <td>{{ flight.carrier }}</td>
+          <td>{{ flight.number }} {% if flight.code_share %}({{ flight.code_share }}){% endif %}</td>
+          <td>{{ flight.origin }}</td>
+          <td>{{ flight.terminal }}</td>
+          <td>
+            <ul class="unstyled">
+{% for person in people %}
+            <li>
+{% if person.twitter %}
+              <a href="https://twitter.com/{{ person.twitter }}">
+{% endif %}
+              {{ person.name }}
+{% if person.twitter %}
+</a>
+{% endif %}
+{% if person.email %}
+              (<a href="mailto:{{ person.email }}">email</a>)
+{% endif %}
+            </li>
+{% endfor %}
+          </ul>
+          </td>
+        </tr>
+{% endfor %}
+{% endfor %}
+      </table>
+
+      <form class="well form-inline" method="POST" action="/add">
+        {% csrf_token %}
+        <select class="input-medium" name="flight">
+{% for flight in flights %}
+          <option value="{{ flight.id }}">{{ flight.number }} {% if flight.code_share %}({{ flight.code_share }}){% endif %}</option>
+{% endfor %}
+        </select>
+        <select class="input-small" name="day">
+          <option value="0">Thursday</option>
+          <option value="1" selected>Friday</option>
+          <option value="2">Saturday</option>
+        </select>
+        <input name="name" type="text" class="input-medium" placeholder="Name">
+        <input name="email" type="text" class="input-medium" placeholder="Email (optional)">
+        <input name="twitter" type="text" class="input-medium" placeholder="Twitter (optional)">
+        <button type="submit" class="btn">Add me!</button>
+      </form>
+    </div>
+
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+  </body>
+</html>
