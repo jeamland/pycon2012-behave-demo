@@ -8,9 +8,7 @@ def impl(context):
     context.browser.open(context.browser_url('/'))
     context.browser.select_form(nr=0)
 
-step_matcher('re')
-
-@when(u'I select "(.*)" as my flight')
+@when(u'I select "{flight}" as my flight')
 def impl(context, flight):
     context.flight = flight
 
