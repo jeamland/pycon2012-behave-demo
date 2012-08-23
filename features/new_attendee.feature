@@ -11,3 +11,14 @@ Feature: Add entries to page
         And I click "Add me!"
         Then my flight should appear in the flights table
         And my name should appear next to my flight
+
+    Scenario: Add person to flight with more details
+        Given I am at the PyCon AU meetup page
+        When I add myself with the following details:
+            | flight  | day    | name       | twitter  | email              |
+            | DJ 1320 | Friday | Benno Rice | jeamland | benno@jeamland.net |
+        And I click "Add me!"
+        Then my flight should appear in the flights table
+        And my name should appear next to my flight
+        And my name should link to my Twitter profile
+        And my email address should be linked next to my name
