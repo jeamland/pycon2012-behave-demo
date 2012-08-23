@@ -6,3 +6,7 @@ Feature: Main page
     Scenario: Meetup form present
         When I fetch the meetup page
         Then I should see the meetup form
+
+    Scenario: Flights table
+        When I fetch the meetup page
+        Then I should see the flights table
